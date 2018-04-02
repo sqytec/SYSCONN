@@ -7,9 +7,10 @@ import java.util.Properties;
 
 public class Configuration implements Constants {
 	public static Properties getProperites() {
-		String path = System.getProperty("user.dir");
+		/*String path = System.getProperty("user.dir");
 		path += "/MQSelection";
-		path += "/MQSeletion.properties";
+		path += "/MQSeletion.properties";*/
+		String path = "F:\\workspace_git\\SYSCONN\\MQSeletion\\MQSeletion.properties";
 		System.out.println(path);
 		File file = new File(path);
 		Properties properties = new Properties();

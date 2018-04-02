@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wlb.T24.in.sys.conn.MQ.MQMsgReciver;
+import com.wlb.T24.in.sys.conn.MQ.MQMsgSender;
 import com.wlb.T24.in.sys.conn.util.Configuration;
 
 /**
@@ -52,15 +54,33 @@ public class MQServlet extends HttpServlet {
 		// MQ channel name
 		String channelName = properties.getProperty(MQSelections + ".MQ.ChannelName");
 		// MQ outQ qMgrName
-		String outQqMgrName = properties.getProperty(MQSelections + ".MQ.outQ.qMgrName");
+		String qMgrName = properties.getProperty(MQSelections + ".MQ.outQ.qMgrName");
 		// MQ send Q Name
-		String sendQName = properties.getProperty(MQSelections + ".MQ.sendQ.qName");
+		String qName = properties.getProperty(MQSelections + ".MQ.sendQ.qName");
 		// MQ receive qName
 		String receiveQName = properties.getProperty(MQSelections + ".MQ.recQ.qName");
 		// MQ out port
-		String mqPort = properties.getProperty(MQSelections + ".MQ.outQ.qPort");
-		System.out.println(hostName + "," + channelName + "," + outQqMgrName + "," + sendQName + "," + receiveQName
+		String port = properties.getProperty(MQSelections + ".MQ.outQ.qPort");
+		int mqPort = Integer.parseInt(port);
+		System.out.println(hostName + "," + channelName + "," + qMgrName + "," + qName + "," + receiveQName
 				+ "," + mqPort);
+		
+		/*com.ibm.mq.MQEnvironment.hostname = hostName;
+	    com.ibm.mq.MQEnvironment.channel = channelName;
+	    com.ibm.mq.MQEnvironment.port = mqPort;
+
+	    MQMsgSender mqMsgSender = new MQMsgSender(qMgrName, qName);
+	    mqMsgSender.sendMsg(MQMessage);
+	    
+	    //wait 3s to get MQ response
+	    try {
+			Thread.sleep(3000);
+			MQMsgReciver mQMsgReciver= new MQMsgReciver(qMgrName, qName);
+		    mQMsgReciver.receiveMsg();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
 		// doGet(request, response);
 	}
 
