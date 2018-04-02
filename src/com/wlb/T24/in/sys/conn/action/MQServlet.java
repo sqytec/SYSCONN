@@ -1,6 +1,7 @@
 package com.wlb.T24.in.sys.conn.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -81,6 +82,8 @@ public class MQServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+		PrintWriter out = response.getWriter();
+		out.println("MQ response");
 		// doGet(request, response);
 	}
 
